@@ -1,29 +1,17 @@
-# Function to count even and odd numbers in a list
-def count_even_odd(numbers):
-    even_count = 0
-    odd_count = 0
-    for num in numbers:
-        if num % 2 == 0:
-            even_count += 1
-        else:
-            odd_count += 1
-    return even_count, odd_count
+# Function to write data to a text file
+def write_data(data, filename="data.txt"):
+    with open(filename, "a") as file:  # Open file in append mode
+        file.write(data + "\n")  # Write data followed by newline
 
-# Main program
-def main():
-    numbers = []  # List to store numbers
-    print("Enter 5 numbers:")
+# Function to read and display data from a text file
+def read_data(filename="data.txt"):
+    with open(filename, "r") as file:  # Open file in read mode
+        content = file.read()  # Read all content from the file
+        print("Data in file:")
+        print(content)  # Display the content
 
-    # Loop to get numbers from the user
-    for i in range(5):
-        num = int(input(f"Enter number {i + 1}: "))
-        numbers.append(num)
-
-    # Count even and odd numbers
-    even_count, odd_count = count_even_odd(numbers)
-    print("\nNumbers:", numbers)
-    print(f"Even Numbers: {even_count}")
-    print(f"Odd Numbers: {odd_count}")
-
+# Sample usage
 if __name__ == "__main__":
-    main()
+    data = input("Enter data to store: ")
+    write_data(data)  # Store data in the file
+    read_data()  # Retrieve and display data
